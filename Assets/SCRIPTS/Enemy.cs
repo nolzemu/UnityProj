@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
 
-    // Новые переменные для атаки и движения
     public float moveSpeed = 3f;
     public float attackRange = 1.5f;
     public int attackDamage = 10;
@@ -19,24 +18,36 @@ public class Enemy : MonoBehaviour
     private bool isAttacking = false;
     private float lastAttackTime;
     public float activationRadius;
+
     void Start()
     {
         currentHealth = maxHealth;
-        target = GameObject.FindGameObjectWithTag("Player").transform; // Находим игрока
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
         if (target != null)
         {
-            // Перемещаемся к игроку
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
-            if (distanceToTarget > attackRange)
+
+            // Управление анимацией бега и стояния
+            if (distanceToTarget > attackRange && !isAttacking) // Добавлено условие !isAttacking
+            {
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
+
+            // Перемещение к игроку
+            if (distanceToTarget > attackRange && !isAttacking)
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             }
 
-            // Проверяем возможность атаки
+            // Проверка возможности атаки
             if (distanceToTarget <= attackRange && !isAttacking && Time.time - lastAttackTime >= attackCooldown)
             {
                 StartCoroutine(Attack());
@@ -44,14 +55,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+
     IEnumerator Attack()
     {
         isAttacking = true;
-        animator.SetTrigger("Attack"); // Запускаем анимацию атаки
-        yield return new WaitForSeconds(0.5f); // Ждем, пока анимация завершится
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.5f);
         if (Vector2.Distance(transform.position, target.position) <= attackRange)
         {
-            // Наносим урон игроку
             target.GetComponent<Player>().TakeDamage(attackDamage);
         }
         lastAttackTime = Time.time;
@@ -61,7 +73,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
         animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
@@ -72,10 +83,8 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
-
-        animator.SetBool("isDead", true); // Анимация смерти
-
+        animator.SetBool("isDead", true);
         GetComponent<Collider2D>().enabled = false;
-        this.enabled = false; // Отключаем компонент Enemy
+        this.enabled = false;
     }
 }
