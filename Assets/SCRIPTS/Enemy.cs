@@ -84,7 +84,8 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Enemy died!");
         animator.SetBool("isDead", true);
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        GetComponent<Collider2D>().enabled = false; // отключаем коллайдер
+        this.enabled = false; // отключаем скрипт
+        GetComponent<Rigidbody2D>().isKinematic = true; // фиксируем позицию врага
     }
 }

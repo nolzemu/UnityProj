@@ -64,7 +64,9 @@
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
     <Compile Include="Assets\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
+    <Compile Include="Assets\SCRIPTS\LoginPage.cs" />
     <Compile Include="Assets\SCRIPTS\Enemy.cs" />
+    <Compile Include="Assets\SCRIPTS\PauseMenu.cs" />
     <Compile Include="Assets\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
     <Compile Include="Assets\SCRIPTS\CameraFocus.cs" />
     <Compile Include="Assets\SCRIPTS\Patroul.cs" />
