@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,6 @@ public class LevelChanger : MonoBehaviour
 {
     private Animator anim;
     public int levelToLoad;
-
     public Vector3 position;
     public VectorValue playerStorage;
 
@@ -16,6 +16,7 @@ public class LevelChanger : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    [System.Obsolete]
     public void FadetoLevel()
     {
         anim.SetTrigger("Fade");

@@ -8,19 +8,9 @@ public class Patroul : MonoBehaviour
     private Vector2 originalPosition;
     private bool movingRight = true;
     private float timer = 5f;
-    public float health = 1f;
     void Start()
     {
         originalPosition = transform.position;
-    }
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        // ƒополнительные действи€ при получении урона, например, анимаци€ или звук
-        if (health <= 0)
-        {
-            Die();
-        }
     }
     void Die()
     {
@@ -65,11 +55,11 @@ public class Patroul : MonoBehaviour
         }
 
         // ќграничение движени€ NPC до patrolDistance
-        if (Vector2.Distance(transform.position, originalPosition) >= patrolDistance)
-        {
+        /*if (Vector2.Distance(transform.position, originalPosition) >= patrolDistance)
+        { 
             movingRight = !movingRight;
             timer = 5f;
-        }
+        } */
     }
 
     void FlipSprite(bool facingRight)

@@ -120,23 +120,23 @@ public class get_npc : MonoBehaviour
     {
         if (mobType == "Бандит")
         {
-            spawnedMobs.Add(mobId, Instantiate(PrefabBandit, new Vector3(x, 0f, y), Quaternion.identity));
+            spawnedMobs.Add(mobId, Instantiate(PrefabBandit, new Vector3(x, y, 0f), Quaternion.identity));
         }
         else if (mobType == "Медведь")
         {
-            spawnedMobs.Add(mobId, Instantiate(PrefabBear, new Vector3(x, 0f, y), Quaternion.identity));
+            spawnedMobs.Add(mobId, Instantiate(PrefabBear, new Vector3(x, y, 0f), Quaternion.identity));
         }
         else if(mobType == "Лягушка")
         {
-            spawnedMobs.Add(mobId, Instantiate(PrefabFrog, new Vector3(x, 0f, y), Quaternion.identity));
+            spawnedMobs.Add(mobId, Instantiate(PrefabFrog, new Vector3(x, y, 0f), Quaternion.identity));
         }
         else if (mobType == "Собака")
         {
-            spawnedMobs.Add(mobId, Instantiate(PrefabDog, new Vector3(x, 0f, y), Quaternion.identity));
+            spawnedMobs.Add(mobId, Instantiate(PrefabDog, new Vector3(x, y, 0f), Quaternion.identity));
         }
         else if (mobType == "Динозавр")
         {
-            spawnedMobs.Add(mobId, Instantiate(PrefabDino, new Vector3(x, 0f, y), Quaternion.identity));
+            spawnedMobs.Add(mobId, Instantiate(PrefabDino, new Vector3(x, y, 0f), Quaternion.identity));
         }
         else
         {

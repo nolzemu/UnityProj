@@ -7,6 +7,7 @@ public class Moving : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private Vector3 _groundCheckOffset;
+    public GameObject player;
     private Vector3 _input;
     private bool _isMoving;
     private bool _isGrounded;
@@ -65,10 +66,12 @@ public class Moving : MonoBehaviour
         if (_input.x > 0)
         {
             _characterSprite.flipX = false; // Вправо
-        }
+                player.GetComponent<MovingAnimations>().attackPoint.localPosition = new Vector3(0.5f, 0.8f, 0f);
+            }
         else if (_input.x < 0)
         {
             _characterSprite.flipX = true; // Влево
+                player.GetComponent<MovingAnimations>().attackPoint.localPosition = new Vector3(-0.5f, 0.8f, 0f);
         }
     }
     _animations.IsMoving = _isMoving;

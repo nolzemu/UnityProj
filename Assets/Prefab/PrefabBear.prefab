@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 5060461678214752796}
   - component: {fileID: 3447304607569114284}
   - component: {fileID: 3453435387892131742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PrefabBear
-  m_TagString: Enemies
+  m_TagString: Bear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,9 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70bf8e1a4f9877046a320669de61c100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.75
+  speed: 1.25
   patrolDistance: 10
-  health: 1
 --- !u!50 &5060461678214752796
 Rigidbody2D:
   serializedVersion: 4

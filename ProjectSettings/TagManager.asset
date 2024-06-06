@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Enemies
+  - Bear
+  - Bandit
+  - Coins
   layers:
   - Default
   - TransparentFX

@@ -44,8 +44,18 @@ public class MovingAnimations : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(20); // Передаем урон врагу
+            //enemy.GetComponent<Enemy>().TakeDamage(20); // Передаем урон врагу
+            //enemy.GetComponent<HealtNeytral>().TakeDamage(20);
+            if(enemy.tag == "Bear")
+            { 
+                enemy.GetComponent<HealtNeytral>().TakeDamage(20);
+            }
+            else
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(20);
+            }
         }
+        
     }
 
     void OnDrawGizmosSelected() // Отрисовываем графическое представление точки атаки

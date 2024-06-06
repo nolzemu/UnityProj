@@ -80,7 +80,9 @@
     <Compile Include="Assets\ButtonTrigger.cs" />
     <Compile Include="Assets\SCRIPTS\DialogueTrigger.cs" />
     <Compile Include="Assets\SCRIPTS\HealtNeytral.cs" />
+    <Compile Include="Assets\SCRIPTS\Coins.cs" />
     <Compile Include="Assets\SCRIPTS\MovingAnimations.cs" />
+    <Compile Include="Assets\SCRIPTS\MoneyText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
