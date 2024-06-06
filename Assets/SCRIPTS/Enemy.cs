@@ -32,18 +32,16 @@ public class Enemy : MonoBehaviour
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
             // Управление анимацией бега и стояния
-            if (distanceToTarget > attackRange && !isAttacking) // Добавлено условие !isAttacking
-            {
-                animator.SetBool("isRunning", true);
-            }
-            else
-            {
-                animator.SetBool("isRunning", false);
-            }
+            animator.SetBool("isRunning", distanceToTarget > attackRange && !isAttacking);
 
             // Перемещение к игроку
             if (distanceToTarget > attackRange && !isAttacking)
             {
+                // Поворачиваем врага к игроку
+                Vector3 direction = target.position - transform.position;
+                direction.y = 0; // Учитываем только горизонтальное направление
+                transform.right = direction.normalized;
+
                 transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             }
 

@@ -3,52 +3,77 @@ using UnityEngine;
 public class Patroul : MonoBehaviour
 {
     public float speed;
-    public float startWaitTime;
-    public Transform[] moveSpots;
-    private int currentSpotIndex;
-    private Vector2 currentDirection;
+    public float patrolDistance;
 
-    private bool isMoving = false;
-
+    private Vector2 originalPosition;
+    private bool movingRight = true;
+    private float timer = 5f;
+    public float health = 1f;
     void Start()
     {
-        currentSpotIndex = Random.Range(0, moveSpots.Length);
-        SetNextDirection();
+        originalPosition = transform.position;
+    }
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        // ƒополнительные действи€ при получении урона, например, анимаци€ или звук
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        Destroy(gameObject);
+        // ƒополнительные действи€ при смерти мишки
     }
 
     void Update()
     {
-        if (isMoving)
+        // ѕровер€ем наличие преп€тствий перед NPC перед каждым перемещением
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, movingRight ? Vector2.right : Vector2.left, 0.1f);
+        if (hit.collider != null)
         {
-            transform.Translate(currentDirection * speed * Time.deltaTime);
-
-            if (Vector2.Distance(transform.position, moveSpots[currentSpotIndex].position) < 0.2f)
+            // ≈сли есть преп€тствие, продолжаем движение в том же направлении
+            transform.Translate((movingRight ? Vector2.right : Vector2.left) * speed * Time.deltaTime);
+        }
+        else
+        {
+            // ≈сли нет преп€тствий, продолжаем обычное патрулирование
+            if (movingRight)
             {
-                if (startWaitTime <= 0)
-                {
-                    SetNextDirection();
-                }
-                else
-                {
-                    startWaitTime -= Time.deltaTime;
-                }
+                transform.Translate(Vector2.right * speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector2.left * speed * Time.deltaTime);
             }
         }
-    }
 
-    void SetNextDirection()
-    {
-        startWaitTime = 0;
-        currentSpotIndex = (currentSpotIndex + 1) % moveSpots.Length;
-        Vector2 targetPosition = moveSpots[currentSpotIndex].position;
-        currentDirection = (targetPosition - (Vector2)transform.position).normalized;
-        FlipSprite(currentDirection.x > 0);
-        isMoving = true;
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            movingRight = !movingRight;
+            timer = 5f;
+        }
+
+        // ѕровер€ем, двигаетс€ ли NPC, перед обновлением спрайта
+        if ((Vector2)transform.position != (Vector2)originalPosition)
+        {
+            FlipSprite(movingRight);
+        }
+
+        // ќграничение движени€ NPC до patrolDistance
+        if (Vector2.Distance(transform.position, originalPosition) >= patrolDistance)
+        {
+            movingRight = !movingRight;
+            timer = 5f;
+        }
     }
 
     void FlipSprite(bool facingRight)
     {
-        // ѕоворачиваем спрайт птички по оси X в зависимости от направлени€
         if (facingRight)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
