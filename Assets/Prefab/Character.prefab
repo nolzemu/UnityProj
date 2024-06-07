@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0.8, z: 0}
-  m_LocalScale: {x: 1.1764704, y: 1.1764704, z: 1}
+  m_LocalScale: {x: 3.0937495, y: 2.3209555, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 259444253837962607}
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3768278451919462908}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.79, y: -1.067, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -95,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 8933119438965205646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.869, y: -0.018, z: 0}
+  m_LocalPosition: {x: -1.17, y: -0.03, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
-  _jumpForce: 20
+  _jumpForce: 35
   _groundCheckOffset: {x: 0, y: 0, z: 0}
   player: {fileID: 8933119438965205646}
 --- !u!114 &778731764622006463
@@ -280,7 +280,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
-  attackRange: 0.75
+  attackRange: 1
   attackDamage: 40
 --- !u!114 &5321396786130323253
 MonoBehaviour:
@@ -296,3 +296,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   pos: {fileID: 11400000, guid: 52c2dac834cf1c84596743ceb199314d, type: 2}
+  BGText: {fileID: 0}

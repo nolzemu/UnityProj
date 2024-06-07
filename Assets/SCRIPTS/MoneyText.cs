@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MoneyText : MonoBehaviour
 {
-    public static int Coin;
-    Text text;
-    void Start()
-    {
-        text = GetComponent<Text>();
-    }
+    public Text text;
 
     void Update()
     {
-        text.text = Coin.ToString();
+        text.text = StaticCoins.Coins.ToString();        
+
     }
+
 }

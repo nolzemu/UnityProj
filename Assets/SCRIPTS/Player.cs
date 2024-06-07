@@ -16,6 +16,15 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    int i = 1;
+    public GameObject BGText;
+    public void Update()
+    {
+        if(i == 1 && StaticCoins.Coins == 1)
+        {
+            BGText.SetActive(true);
+        }
+    }
     // Метод для получения урона
     public void TakeDamage(int damage)
     {

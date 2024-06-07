@@ -1,29 +1,41 @@
-using Microsoft.Unity.VisualStudio.Editor;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
     private Animator anim;
-    public int levelToLoad;
+    public string levelToLoad; // Имя сцены для загрузки
     public Vector3 position;
     public VectorValue playerStorage;
+    public int requiredCoins = 9;
+
+    private int collectedCoins = 0;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    [System.Obsolete]
     public void FadetoLevel()
     {
         anim.SetTrigger("Fade");
     }
+
     public void OnFadeComplete()
     {
         playerStorage.initialValue = position;
-        SceneManager.LoadScene("2lvl");
+        StaticCoins.Coins = 0;
+        // Загрузка сцены, указанной в переменной levelToLoad
+        SceneManager.LoadScene(levelToLoad);
+    }
+
+    public void SetCollectedCoins(int coins)
+    {
+        collectedCoins = coins;
+    }
+
+    public bool CanProceedToNextLevel()
+    {
+        return collectedCoins >= requiredCoins;
     }
 }

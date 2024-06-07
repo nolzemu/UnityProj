@@ -10,7 +10,7 @@ public class ButtonTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && StaticCoins.Coins == 9)
         {
             anim.SetTrigger("isTriggered");
             frame.SetActive(true);
@@ -22,7 +22,7 @@ public class ButtonTrigger : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && StaticCoins.Coins == 9)
         {
             anim.SetTrigger("isTriggered");
             frame.SetActive(true);
