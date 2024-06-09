@@ -118,6 +118,8 @@ public class get_npc : MonoBehaviour
     }
     void SpawnMob(float x, float y, string mobType, int mobId)
     {
+        x = x / 13.9f;
+        y = y - 110;
         if (mobType == "Бандит")
         {
             spawnedMobs.Add(mobId, Instantiate(PrefabBandit, new Vector3(x, y, 0f), Quaternion.identity));
