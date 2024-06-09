@@ -5,14 +5,12 @@ public class Player : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
-    public VectorValue pos;
     private Animator animator;
     private bool isDead = false; // ‘лаг дл€ отслеживани€ состо€ни€ живучести игрока
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        transform.position = pos.initialValue;
         currentHealth = maxHealth;
     }
 
